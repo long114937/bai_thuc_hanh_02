@@ -1,1 +1,85 @@
 # bai_thuc_hanh_02
+ bài 2
+Input: Nhập số hàng và số cột của ma trận, sau đó nhập các phần tử nguyên của ma trận theo từng hàng.
+Output: Hiển thị ma trận vừa nhập với số hàng và số cột tương ứng. Nếu dữ liệu nhập không hợp lệ hoặc không đủ bộ nhớ thì thông báo lỗi.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int h, c;
+
+    // Nhap so hang va so cot
+    printf("Nhap so hang va so cot: ");
+    if (scanf("%d%d", &h, &c) != 2) {
+        printf("Du lieu nhap khong hop le!\n");
+        return 1;
+    }
+
+    // Kiem tra kich thuoc ma tran
+    if (h <= 0 || c <= 0) {
+        printf("So hang va so cot phai lon hon 0!\n");
+        return 1;
+    }
+
+    // Cap phat bo nho cho ma tran
+    int **ma = (int **)malloc(h * sizeof(int *));
+
+    if (ma == NULL) {
+        printf("Khong du bo nho!\n");
+        return 1;
+    }
+
+    // Cap phat bo nho cho tung hang
+    for (int i = 0; i < h; i++) {
+        ma[i] = (int *)malloc(c * sizeof(int));
+
+        if (ma[i] == NULL) {
+            printf("Khong du bo nho tai dong %d!\n", i);
+
+            for (int k = 0; k < i; k++) {
+                free(ma[k]);
+            }
+
+            free(ma);
+            return 1;
+        }
+    }
+
+    // Nhap du lieu ma tran
+    printf("Nhap cac phan tu ma tran:\n");
+
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < c; j++) {
+            if (scanf("%d", &ma[i][j]) != 1) {
+                printf("Du lieu nhap khong hop le!\n");
+
+                for (int k = 0; k < h; k++) {
+                    free(ma[k]);
+                }
+
+                free(ma);
+                return 1;
+            }
+        }
+    }
+
+    // In ma tran
+    printf("Ma tran %dx%d vua tao:\n", h, c);
+
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < c; j++) {
+            printf("%d\t", ma[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Giai phong ma tran
+    for (int i = 0; i < h; i++) {
+        free(ma[i]);
+    }
+
+    free(ma);
+
+    return 0;
+}
