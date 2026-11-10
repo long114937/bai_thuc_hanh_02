@@ -1,7 +1,7 @@
-# bai_thuc_hanh_02
+
  bài 2
-Input: Nhập số hàng và số cột của ma trận, sau đó nhập các phần tử nguyên của ma trận theo từng hàng.
-Output: Hiển thị ma trận vừa nhập với số hàng và số cột tương ứng. Nếu dữ liệu nhập không hợp lệ hoặc không đủ bộ nhớ thì thông báo lỗi.
+Input: Nhập số hàng và số cột của ma trận, sau đó nhập các phần tử nguyên của ma trận theo từng hàng
+Output: Hiển thị ma trận vừa nhập với số hàng và số cột tương ứng. Nếu dữ liệu nhập không hợp lệ hoặc không đủ bộ nhớ thì thông báo lỗi
 
 #include <stdio.h>
 #include <stdlib.h>
